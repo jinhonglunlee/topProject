@@ -1,0 +1,15 @@
+<h1>淘宝API TOOLS</h1>
+<%=@aaa %>
+请选择类目：<%= select_tag(:categories,options_for_select([["请选择",nil]] + @categories.map { |category| [category.name, category.id] }), :onchange => "apiCategoryChange(this)" )%><br />
+请选择方法：<%= select_tag(:functions,options_for_select([["请选择",nil]]), :onchange => "apiFunctionChange(this)")%><br />
+<div id="paramsDiv">
+<% if @params %>
+<% @params.each do |param|%>
+<span name="paramsSpan"><%=param.name%>:<%=text_field :param,:id%></span><br/>
+<% end %>
+<% end %>
+</div>
+<input type="button" value="确定" onclick="toFindJson()" />
+<div id="resultDiv">
+	
+</div>
